@@ -1,0 +1,27 @@
+# .github/workflows/daily-analysis.yml
+name: Daily Football Analysis
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # 8:00 AM UTC daily
+  workflow_dispatch:  # Allow manual trigger
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Run Football Analysis
+        run: node scripts/daily-analysis.js
+        env:
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
