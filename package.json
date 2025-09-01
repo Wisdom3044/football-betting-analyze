@@ -1,0 +1,10 @@
+// package.json
+{
+  "name": "football-betting-analyzer",
+  "version": "1.0.0",
+  "dependencies": {
+    "nodemailer": "^6.9.7",
+    "node-fetch": "^3.3.2",
+    "cheerio": "^1.0.0-rc.12"
+  }
+}
